@@ -82,7 +82,7 @@ public class ContinuedDeposit {
         long remaining = zipFile.length() - chunkSize;
         int count = 2;
         while (remaining > 0) {
-            System.out.print(String.format("POST-ing chunk of %d bytes to SE-IRI (remaining: %d) ... ", chunkSize, remaining));
+            System.out.print(String.format("POST-ing chunk of %d bytes to SE-IRI (%s remaining: %d) ... ", chunkSize, seIri.toString(), remaining));
             response = Common.sendChunk(dis, chunkSize, "POST", seIri, "bag.zip." + count++, "application/octet-stream", http, remaining > chunkSize);
             remaining -= chunkSize;
             bodyText = Common.readEntityAsString(response.getEntity());
